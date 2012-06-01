@@ -1,0 +1,34 @@
+.navbar.navbar-fixed-top
+	.navbar-inner
+		.container
+			%a.brand
+				RepMyRide
+			%ul.nav
+				%li.divider-vertical
+				%li
+					= link_to root_path, :class => home_page ? "active" : nil do
+						%i.icon-align-justify
+						Catalog
+				%li.divider-vertical
+				- if user_signed_in?
+					%li
+						= link_to user_path(current_user), :class => profile_page ? "active" : nil do
+							%i.icon-user
+							Dashboard
+					%li.divider-vertical
+			%span.right_nav
+				%ul.nav{:style => 'margin-right: 0'}
+					%li.divider-vertical
+					%li
+						= link_to pages_path do
+							FAQ / Contact
+					%li.divider-vertical
+					- if user_signed_in?
+						%li
+							= link_to "Logout", logout_path, :style => "padding-left: 24px; padding-right: 24px;"
+					- else
+						%li.facebook-button
+							= link_to user_omniauth_authorize_path(:facebook) do
+								%i.icon-facebook-sign
+								Login
+					%li.divider-vertical

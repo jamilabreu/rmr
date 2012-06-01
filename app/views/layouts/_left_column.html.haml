@@ -1,0 +1,48 @@
+.left_column_holder
+	.left_column
+		%ul{:style => "padding: 1px"}
+		.filter_title Filters
+		%ul
+			.filter
+				= link_to "All", root_url	
+
+		%ul	
+			.filter_title Body
+			- @bodies.each do |body|
+				.filter{:class => selected?(:body, body) ? "selected" : nil}
+					= link_to(:controller => params[:controller], :action => params[:action], body: params[:body].present? ? nil : body, make: params[:make], year: params[:year], transmission: params[:transmission]) do
+						%li
+							= body
+							- if selected?(:body, body)
+								%i.icon-remove.icon-white
+
+
+		%ul	
+			.filter_title Make
+			- @makes.each do |make|
+				.filter{:class => selected?(:make, make) ? "selected" : nil}
+					= link_to(:controller => params[:controller], :action => params[:action], body: params[:body], make: params[:make].present? ? nil : make, year: params[:year], transmission: params[:transmission]) do
+						%li
+							= make
+							- if selected?(:make, make)
+								%i.icon-remove.icon-white
+								
+			%ul
+			.filter_title Year
+			- @years.each do |year|
+				.filter{:class => selected?(:year, year) ? "selected" : nil}
+					= link_to(:controller => params[:controller], :action => params[:action], body: params[:body], make: params[:make], year: params[:year].present? ? nil : year, transmission: params[:transmission]) do
+						%li
+							= year
+							- if selected?(:year, year)
+								%i.icon-remove.icon-white	
+								
+		%ul	
+			.filter_title Transmission
+			- @transmissions.each do |transmission|
+				.filter{:class => selected?(:transmission, transmission) ? "selected" : nil}
+					= link_to(:controller => params[:controller], :action => params[:action], body: params[:body], make: params[:make], year: params[:year], transmission: params[:transmission].present? ? nil : transmission) do
+						%li
+							= transmission
+							- if selected?(:transmission, transmission)
+								%i.icon-remove.icon-white

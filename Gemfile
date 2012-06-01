@@ -15,9 +15,17 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', 		'>= 1.0.3'
-	gem "meta_search",  '>= 1.1.0.pre'
+	gem 'meta_search',  '>= 1.1.0.pre'
+	gem 'font-awesome-sass-rails'
 end
 
 gem 'jquery-rails'
 gem 'activeadmin'
 gem 'heroku'
+gem 'devise'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'faker'
+gem 'haml-rails'
+gem 'carrierwave'
+gem 'fog'

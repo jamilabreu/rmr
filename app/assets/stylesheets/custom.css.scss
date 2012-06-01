@@ -2,7 +2,73 @@
 
 /* Variables */
 $red: #C51920;
+$black: #373737;
+$grey: #F0F0F0;
 
+html { background: #ECF0F1 url("background_noise.png"); }
+html, html a { -webkit-font-smoothing: antialiased; text-shadow: 1px 1px 1px rgba(0,0,0,0.004); }
+html a { font-weight: bold;  text-decoration: none; }
+a:hover { text-decoration: none; }
+ul, ol { margin: 0 }
+body { background: none; padding-top: 60px; }
+
+.container { }
+.section { border: 1px solid #D9D4D4; background: #FFF; @include border-radius(3px); @include box-shadow(0,1px,3px,0,rgba(0, 0, 0, 0.05)); }
+
+.cars { }
+
+/* Header */
 .navbar { }
-.navbar-inner { }
-.brand {}
+.navbar-inner { background: #68568A; }
+.navbar .nav > li > a { color: white; font-weight: bold; padding: 10px 28px 11px; }
+.navbar .nav > li > a i { line-height: 10px; font-size: 15px; }
+.navbar .nav > li > a.active { color: #FFF; background: #493c61; }
+
+.brand { font-weight: bold; margin-right: 42px; }
+
+.navbar .divider-vertical { height: 40px; width: 1px; margin: 0; overflow: hidden; background: #7f6f9b; border-right: 0px solid #68568A; }
+
+.right_nav { float: right; }
+.right_nav .nav > li > a { color: white; font-weight: bold; padding: 10px 17px 11px; }
+.facebook-button { background: #3b5998; border-left: 1px solid #FFF; border-right: 1px solid #FFF; }
+
+/* Left Column */
+
+.left_column_holder { }
+.left_column { }
+.left_column ul { list-style: none; padding-bottom: 12px; border-bottom: 1px solid #DDD; &:last-child { border-bottom: none; } }
+
+.filter { }
+.filter a { display: block; font-size: 13px; color: #68568A; padding: 1px 3px 1px 0; }
+.filter a:hover { color: $black; }
+.filter a:hover i { color: white; }
+.filter i { float: right; position: relative; top: 1px; line-height: 16px; color: #999; }
+
+.filter_title { padding-bottom: 0px; color: #AAA; font-size: 12px; font-weight: bold; text-transform: uppercase; font-family: "franklin-gothic-urw",sans-serif; }
+
+.selected a { background: $black; color: #FFF; margin-bottom: 1px; padding-left: 6px; @include border-radius(3px); } 
+.selected a:hover { background: $black; color: #FFF; }
+
+/* Car */
+.car { margin: 0 0 6px 0; padding: 8px; }
+
+.car_header { padding: 0 0 6px 6px; height: 30px; }
+.car_name { padding-top: 5px; font-family: "museo-slab",serif; }
+.car_name a { display: block; font-weight: bold; font-size: 17px; color: $black; }
+.car_name i { font-size: 14px; margin-left: 2px; color: #CCC; }
+.car_header:hover .car_name i { color: #999; }
+
+.car_request { float: right; }
+.car_request a { font-size: 11px; }
+.car_images { background: $grey;  padding: 6px 0 6px 6px; height: 58px; overflow: hidden; border: 1px solid #DDD; @include border-radius(2px); }
+.car_images img { height: 58px; float: left; margin: 0 1px 0 0; }
+
+.car_profile { display: none; padding: 6px 10px; margin-bottom: 6px; line-height: 20px; background: #ECF0F1; border: 1px solid #DDD; @include border-radius(2px) }
+.car_profile div { display: inline-block; margin-right: 10px; } 
+.car_profile span { font-weight: bold; }
+
+.empty { margin-bottom: 10px; padding: 10px 20px; color: #68568A; font-weight: bold; }
+/* Form */
+.well { background: #FFF; display: none; }
+label { font-weight: bold; text-transform: capitalize; margin-right: 10px; margin-bottom: 20px; }
+textarea { height: 100px; width: 212px; }

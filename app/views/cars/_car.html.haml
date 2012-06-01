@@ -1,0 +1,86 @@
+.car.section
+	.car_header
+		.car_request{:id => "car_request_#{car.id}"}
+			- unless car_owner?(car)
+				- if !user_signed_in?
+					= link_to "REQUEST RIDE", user_omniauth_authorize_path(:facebook), :class => "btn btn-info"
+				- elsif requested?(car)
+					= link_to "RIDE REQUESTED", send_request_path(:id => car.id), :disabled => true, :class => "btn btn-warning"
+				- else
+					= link_to "REQUEST RIDE", send_request_path(:id => car.id), :remote => true, :class => "btn btn-info"
+		.car_name
+			= link_to car_path(car), :remote => true do
+				= car.display_name
+				%i.icon-plus
+	.car_profile{:id => "car_profile_#{car.id}"}
+		- if car.make.body
+			%div
+				%span Body:
+				= car.make.body
+		- if car.make.seats
+			%div
+				%span Seats:
+				= car.make.seats
+		- if car.make.doors
+			%div
+				%span Doors:
+				= car.make.doors
+		- if car.make.height
+			%div
+				%span H:
+				= car.make.height
+				ft.
+		- if car.make.length
+			%div
+				%span L:
+				= car.make.length
+				ft.
+		- if car.make.width
+			%div
+				%span W:
+				= car.make.width
+				ft.
+		- if car.make.weight
+			%div
+				%span Weight:
+				= car.make.weight
+				lbs.
+		- if car.make.drive
+			%div
+				%span Drive:
+				= car.make.drive
+		- if car.make.transmission
+			%div
+				%span Transmission:
+				= car.make.transmission
+		- if car.make.engine_position
+			%div
+				%span Engine Position:
+				= car.make.engine_position
+		- if car.make.engine_cc
+			%div
+				%span CCs:
+				= car.make.engine_cc
+		- if car.make.engine_num_cyl
+			%div
+				%span Cylenders:
+				= car.make.engine_num_cyl
+		- if car.make.engine_type
+			%div
+				%span Engine Type:
+				= car.make.engine_type
+		- if car.make.engine_fuel
+			%div
+				%span Fuel:
+				= car.make.engine_fuel
+		- if car.pop_features
+			%div
+				%span Pop Features:
+				= car.pop_features
+	.car_images
+		= link_to image_tag(car.image1), image_path(car.image1), :rel => "lightbox-#{car.id}" if car.image1
+		= link_to image_tag(car.image2), image_path(car.image2), :rel => "lightbox-#{car.id}" if car.image2
+		= link_to image_tag(car.image3), image_path(car.image3), :rel => "lightbox-#{car.id}" if car.image3
+		= link_to image_tag(car.image4), image_path(car.image4), :rel => "lightbox-#{car.id}" if car.image4
+		= link_to image_tag(car.image5), image_path(car.image5), :rel => "lightbox-#{car.id}" if car.image5
+		= link_to image_tag(car.image6), image_path(car.image6), :rel => "lightbox-#{car.id}" if car.image6

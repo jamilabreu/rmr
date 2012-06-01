@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120301100956) do
+ActiveRecord::Schema.define(:version => 20120601020020) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -45,5 +45,91 @@ ActiveRecord::Schema.define(:version => 20120301100956) do
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
+
+  create_table "cars", :force => true do |t|
+    t.integer  "make_id"
+    t.integer  "user_id"
+    t.string   "vin"
+    t.string   "plate_number"
+    t.string   "pop_features"
+    t.boolean  "for_sale",     :default => false
+    t.boolean  "approved",     :default => false
+    t.string   "image1"
+    t.string   "image2"
+    t.string   "image3"
+    t.string   "image4"
+    t.string   "image5"
+    t.string   "image6"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  create_table "makes", :force => true do |t|
+    t.integer  "make_id"
+    t.string   "make"
+    t.string   "make_slug"
+    t.string   "name"
+    t.string   "trim"
+    t.integer  "year"
+    t.string   "body"
+    t.string   "engine_position"
+    t.integer  "engine_cc"
+    t.integer  "engine_num_cyl"
+    t.string   "engine_type"
+    t.integer  "engine_valves_per_cyl"
+    t.integer  "engine_rpm"
+    t.integer  "engine_torque_rpm"
+    t.string   "engine_fuel"
+    t.integer  "top_speed"
+    t.string   "drive"
+    t.string   "transmission"
+    t.integer  "seats"
+    t.integer  "doors"
+    t.float    "weight"
+    t.float    "length"
+    t.float    "width"
+    t.float    "height"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  create_table "requests", :force => true do |t|
+    t.integer  "car_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "requests", ["car_id"], :name => "index_requests_on_car_id"
+  add_index "requests", ["user_id"], :name => "index_requests_on_user_id"
+
+  create_table "users", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "provider"
+    t.integer  "uid"
+    t.string   "token"
+    t.string   "name"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "image"
+    t.string   "large_image"
+    t.string   "twitter_name"
+    t.string   "gender"
+    t.string   "profile_url"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

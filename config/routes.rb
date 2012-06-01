@@ -1,9 +1,24 @@
-Jamilabreu::Application.routes.draw do
+Rmr::Application.routes.draw do
+  
   ActiveAdmin.routes(self)
-
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  root :to => 'pages#index'
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_scope :user do
+    get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
+    get "login", :to => "devise/sessions#new"
+    get "logout", :to => "devise/sessions#destroy"
+    get "register", :to => "devise/registrations#new"
+    get "edit", :to => "devise/registrations#edit"
+  end
+  resources :pages 
+  resources :users  
+  resources :cars  
+  
+  match 'send_request', :to => "cars#send_request", :as => "send_request"
+  
+  root :to => 'cars#index'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

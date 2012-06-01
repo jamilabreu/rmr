@@ -1,0 +1,11 @@
+.span2
+	= render "layouts/left_column"
+.span8
+	.cars
+		=# content_tag :p, notice, :class => 'alert alert-block' if notice.present?
+		=# content_tag :p, alert, :class => 'alert alert-error' if alert.present?
+		= render @cars
+.span3
+	= link_to image_tag("http://placehold.it/220x440"), "#", :class => "thumbnail"
+	= link_to image_tag("http://placehold.it/220x440"), "#", :class => "thumbnail"
+	= link_to image_tag("http://placehold.it/220x440"), "#", :class => "thumbnail"

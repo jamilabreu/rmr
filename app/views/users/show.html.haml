@@ -1,0 +1,25 @@
+.span2
+	&nbsp;
+	=# render "layouts/left_column"
+.span8
+	.filter_title{:style => "margin-bottom: 5px"} Requested Rides
+	- if @requests.blank?
+		.empty.section
+			You haven't requested the availability of any rides yet.
+	- else
+		= render @requests
+	.filter_title{:style => "margin-bottom: 5px"} My Rides
+	- if @cars.blank?
+		.empty.section
+			You haven't uploaded any rides yet.
+	- else
+		= render @cars
+	.new_car
+		= link_to new_car_path, :id => "upload_car_button", :class => "btn btn-info", :remote => true do
+			%i.icon-plus
+			UPLOAD A RIDE
+		= render :partial => "cars/form"
+.span3
+	= link_to image_tag("http://placehold.it/220x440"), "#", :class => "thumbnail"
+	= link_to image_tag("http://placehold.it/220x440"), "#", :class => "thumbnail"
+	= link_to image_tag("http://placehold.it/220x440"), "#", :class => "thumbnail"

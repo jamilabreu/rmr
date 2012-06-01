@@ -1,0 +1,18 @@
+<div class="well form-inline section">
+<h4 style="color:#68568A;">Upload New Ride</h4><BR>
+<%= form_for Car.new do |f|%>
+	<%= collection_select(:car, :make_id, Make.order("makes.year, makes.make, makes.name, makes.trim"), :id, :display_name, { :include_blank => "Select Your Ride - Year, Make, Model, Trim" }, {"style" => "width: 322px" } ) %><BR>
+	<%= f.hidden_field :user_id, { :value => params[:user] } %><BR>
+	<label for="car_vin_number">Vehicle ID #</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= f.text_field :vin, :class => "form_field" %><BR>
+	<label for="car_plate_number">License Plate #</label><%= f.text_field :plate_number, :class => "form_field" %><BR>
+	<label for="car_pop_features">'Pop' Features</label><%= f.text_area :pop_features, :class => "form_field" %><BR><BR>
+	<%= f.label :for_sale? %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :for_sale, :class => "form_field" %><BR>
+	<label for="car_image1">Image #1</label><%= f.file_field :image1, :class => "form_field" %><BR>
+	<label for="car_image2">Image #2</label><%= f.file_field :image2, :class => "form_field" %><BR>
+	<label for="car_image3">Image #3</label><%= f.file_field :image3, :class => "form_field" %><BR>
+	<label for="car_image4">Image #4</label><%= f.file_field :image4, :class => "form_field" %><BR>
+					
+	<b><%= f.submit "Upload Ride", :class => "btn btn-info" %></b>
+	
+<% end %>
+</div>
